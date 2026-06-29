@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sai Harsha Vardhan Mylavarapu — IT &amp; AI Governance Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#eef1ef; --page:#f7f9f7; --ink:#15170f; --ink2:#454a3d; --soft:#6b7163; --line:#d7ddd2;
+    --accent:#134e4a; --accent-soft:#dce8e6;
+    --serif:'Fraunces',Georgia,serif; --read:'Newsreader',Georgia,serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--read);font-size:18px;line-height:1.66;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:3px}
+  ::selection{background:var(--accent);color:var(--page)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+  .mono{font-family:var(--mono)}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+
+  header.nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(238,241,239,.86);backdrop-filter:blur(6px);z-index:20}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.01em}
+  .nav nav{display:flex;gap:24px;font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+  .nav nav a{color:var(--ink2)}.nav nav a:hover{color:var(--accent);text-decoration:none}
+  @media(max-width:640px){.nav nav{display:none}}
+
+  /* front matter / hero */
+  .front{padding:72px 0 48px;border-bottom:1px solid var(--line)}
+  .front .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .front h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-.01em;margin:18px 0 22px;max-width:20ch}
+  .byline{font-family:var(--mono);font-size:13px;color:var(--soft);display:flex;flex-wrap:wrap;gap:8px 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0}
+  .byline b{color:var(--ink);font-weight:500}
+  .abstract{margin-top:26px;display:grid;grid-template-columns:120px 1fr;gap:24px}
+  @media(max-width:640px){.abstract{grid-template-columns:1fr;gap:8px}}
+  .abstract .label{padding-top:5px}
+  .abstract p{font-size:18px;color:var(--ink2)}
+  .abstract p b{color:var(--ink);font-weight:500;font-style:italic}
+
+  section{padding:50px 0;border-bottom:1px solid var(--line)}
+  .sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3.2vw,32px);letter-spacing:-.01em;margin-bottom:16px}
+  p.body{font-size:18px;color:var(--ink2);max-width:68ch}
+  p.body b{color:var(--ink);font-weight:500}
+
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px}
+  @media(max-width:700px){.pillars{grid-template-columns:1fr}}
+  .pillar{background:var(--page);padding:24px}
+  .pillar .no{font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .pillar h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:8px 0 8px}
+  .pillar p{font-size:15px;color:var(--soft)}
+
+  /* forecast figure (signature) */
+  .figure{margin-top:10px;background:var(--page);border:1px solid var(--line);border-radius:12px;padding:26px}
+  .figure .cap{font-family:var(--mono);font-size:12px;color:var(--soft);margin-bottom:20px}
+  .bars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:end;height:200px}
+  .bar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+  .bar .col{width:100%;max-width:96px;border-radius:7px 7px 0 0;background:linear-gradient(180deg,var(--accent),#2c7a73)}
+  .bar.r1 .col{height:52%}.bar.r2 .col{height:73%;background:linear-gradient(180deg,#2c7a73,#3f9b91)}.bar.r3 .col{height:100%;background:linear-gradient(180deg,#3f9b91,#5cb8ad)}
+  .bar .val{font-family:var(--serif);font-weight:600;font-size:22px;margin-top:12px}
+  .bar .sc{font-family:var(--mono);font-size:11px;color:var(--soft);letter-spacing:.04em;margin-top:2px;text-align:center}
+  .figure .note{font-family:var(--mono);font-size:11px;color:var(--soft);margin-top:18px;border-top:1px dashed var(--line);padding-top:12px}
+
+  /* works / contributions list */
+  .works{display:grid;gap:0}
+  .work{display:grid;grid-template-columns:1fr;gap:4px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .work:last-child{border-bottom:0}
+  .work .wt{font-family:var(--serif);font-weight:600;font-size:19px}
+  .work .wd{font-size:16px;color:var(--ink2)}
+  .work .wm{font-family:var(--mono);font-size:11.5px;color:var(--soft);letter-spacing:.04em}
+
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  @media(max-width:700px){.twocol{grid-template-columns:1fr;gap:24px}}
+  .twocol h3{font-family:var(--serif);font-weight:600;font-size:18px;margin-bottom:10px}
+  .twocol ul{list-style:none;display:grid;gap:8px}
+  .twocol li{font-size:16px;color:var(--ink2);padding-left:18px;position:relative}
+  .twocol li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+
+  .colophon{padding:54px 0}
+  .colophon h2{margin-bottom:10px}
+  .colophon p{color:var(--ink2);max-width:60ch;margin-bottom:22px}
+  .links{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:13px}
+  .links a{border:1px solid var(--line);background:var(--page);padding:10px 16px;border-radius:9px;color:var(--ink)}
+  .links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);font-size:11.5px;color:var(--soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <div class="brand">S. H. V. Mylavarapu</div>
+  <nav><a href="#research">research</a><a href="#forecast">forecast</a><a href="#works">works</a><a href="#about">about</a></nav>
+</div></header>
+
+<main class="wrap">
+  <!-- FRONT MATTER -->
+  <section class="front" style="border-top:0">
+    <span class="kicker">Doctoral Research · Information Technology (AI focus)</span>
+    <h1>Governing the technologies that move faster than the institutions meant to hold them.</h1>
+    <div class="byline">
+      <span><b>Sai Harsha Vardhan Mylavarapu</b></span>
+      <span>University of the Cumberlands</span>
+      <span>InfoTech in a Global Economy</span>
+      <span>Atlanta, GA</span>
+    </div>
+    <div class="abstract">
+      <span class="label">Abstract</span>
+      <p>My work sits where <b>artificial intelligence</b>, <b>enterprise IT</b>, and <b>public policy</b> meet — studying how nations and institutions can govern fast-moving technology without smothering it. Recent research proposes a <b>Global Technology Governance Council</b> and models the diffusion of generative AI markets through 2030 under competing policy regimes.</p>
+    </div>
+  </section>
+
+  <!-- RESEARCH PILLARS -->
+  <section id="research">
+    <div class="sec-label">Research agenda</div>
+    <h2>Three threads, one question</h2>
+    <p class="body" style="margin-bottom:24px">How do we build governance that is legitimate across borders, adaptive to technical change, and specific enough to act on? I approach it through diffusion modeling, institutional design, and risk classification.</p>
+    <div class="pillars">
+      <div class="pillar"><div class="no">i.</div><h3>Diffusion &amp; forecasting</h3><p>Modeling generative-AI market adoption with Bass diffusion and CAGR methods across restrictive, baseline, and permissive policy regimes.</p></div>
+      <div class="pillar"><div class="no">ii.</div><h3>Institutional design</h3><p>A proposed Global Technology Governance Council grounded in polycentric governance theory and a typology of "digital empires."</p></div>
+      <div class="pillar"><div class="no">iii.</div><h3>Risk classification</h3><p>A Technology Risk Classification Framework for sorting emerging technologies by capability, exposure, and governance urgency.</p></div>
+    </div>
+  </section>
+
+  <!-- FORECAST FIGURE (signature) -->
+  <section id="forecast">
+    <div class="sec-label">Figure 1</div>
+    <h2>Generative-AI market to 2030, by policy regime</h2>
+    <p class="body" style="margin-bottom:8px">A core result: the governance regime a society chooses materially changes the size of the market it ends up with. Modeled projections for 2030 diverge by roughly a hundred billion dollars across scenarios.</p>
+    <div class="figure">
+      <div class="cap">Projected 2030 market value (USD), by regulatory scenario</div>
+      <div class="bars">
+        <div class="bar r1"><div class="col"></div><div class="val">$122B</div><div class="sc">Restrictive</div></div>
+        <div class="bar r2"><div class="col"></div><div class="val">$171B</div><div class="sc">Baseline</div></div>
+        <div class="bar r3"><div class="col"></div><div class="val">$233B</div><div class="sc">Permissive</div></div>
+      </div>
+      <div class="note">Method: hybrid Bass diffusion / CAGR forecasting · scenarios reflect differing regulatory intensity</div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works">
+    <div class="sec-label">Selected works</div>
+    <h2>Papers &amp; deliverables</h2>
+    <div class="works">
+      <div class="work"><div class="wt">A Global Technology Governance Council</div><div class="wd">A proposal for cross-border AI governance using Ostrom's polycentric framework and a typology of digital empires.</div><div class="wm">Doctoral research paper · governance design</div></div>
+      <div class="work"><div class="wt">Strategic Adaptive Governance Framework (SAGF)</div><div class="wd">A capstone synthesis of diffusion forecasting and governance-gap analysis into an adaptive policy framework.</div><div class="wm">Capstone paper</div></div>
+      <div class="work"><div class="wt">Generative-AI Market Forecast to 2030</div><div class="wd">Bass diffusion / CAGR projections across restrictive, baseline, and permissive regulatory scenarios.</div><div class="wm">Quantitative study · Figure 1 above</div></div>
+      <div class="work"><div class="wt">Global IT Policy Analyses</div><div class="wd">Comparative work on national frameworks and technology-restriction case studies in the global economy.</div><div class="wm">Policy analysis</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-label">About</div>
+    <div class="twocol">
+      <div>
+        <h3>Practitioner-scholar</h3>
+        <p class="body" style="font-size:16px">I research governance by day and build the systems it governs by night — a software engineer working in enterprise identity and AI, which keeps the theory honest against what actually ships.</p>
+      </div>
+      <div>
+        <h3>Methods &amp; tools</h3>
+        <ul>
+          <li>Diffusion modeling · Bass / CAGR</li>
+          <li>Inferential statistics · SPSS, JASP</li>
+          <li>Polycentric &amp; comparative governance</li>
+          <li>Technology risk frameworks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOPHON / CONTACT -->
+  <section class="colophon" style="border-bottom:0">
+    <div class="sec-label">Correspondence</div>
+    <h2>For collaboration, review, or speaking.</h2>
+    <p>I welcome conversations on AI governance, technology policy, and the institutional design questions that come with both.</p>
+    <div class="links">
+      <a href="mailto:your.email@example.com">Email</a>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap"><span>© <span id="yr"></span> Sai Harsha Vardhan Mylavarapu</span><span>IT · AI · Governance Research</span></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
